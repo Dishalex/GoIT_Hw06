@@ -15,7 +15,7 @@ CATEGORIES = {"Pictures": ['.JPEG', '.PNG', '.JPG', '.SVG'],
 def unpack_archives(file: Path, root_dir: Path, category: str) -> None:
     path_to_unpack = root_dir.joinpath(f"{category}\\{normalize(file.stem)}")
     shutil.unpack_archive(file, path_to_unpack)
-    print(f'File {file} unpack to directory {path_to_unpack} and deleted.')
+    print(f'File {file} unpacked to directory {path_to_unpack} and deleted.')
     file.unlink()
 
 
@@ -56,6 +56,7 @@ def delete_folders(path: Path) -> None:
             delete_folders(item)
         try:
             item.rmdir()
+            print(f'{item} was removed')
         except:
             continue
 
